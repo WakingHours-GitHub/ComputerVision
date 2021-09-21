@@ -53,5 +53,5 @@ while True:  # 不断的去获取你当前捕获的图像
 
     displayFps(img)  # 显示帧率
 
-    cv2.imshow("testImage", img)  # 显示出来
+    cv2.imshow("MyTestImage", img)  # 显示出来
     cv2.waitKey(5)

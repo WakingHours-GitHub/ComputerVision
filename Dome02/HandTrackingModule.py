@@ -5,6 +5,7 @@ import time
 
 # 手部追踪模块
 class handDetector():
+
     def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5):
         self.mode = mode
         self.maxHands = maxHands
@@ -56,7 +57,7 @@ def main():
     while True:
         success, img = cap.read()
         img = detector.findHands(img)
-        lmList = detector.findPosition(img,draw=False)
+        lmList = detector.findPosition(img, draw=False)
         if len(lmList) != 0:  # != 0 说明,检测到东西所以写入到lmList
             print(lmList[4])  # 这里面的标号
 
