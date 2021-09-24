@@ -2,6 +2,7 @@ import cv2
 import time
 import math
 import numpy as np
+import pyautogui
 import HandTrackingModule as htm  # 导入一个HandTrack..的类
 # 导入音频相关的库: pip install pico
 from ctypes import cast, POINTER
@@ -20,7 +21,7 @@ cap.set(4, hCam)  # 设置这项头高度
 cTime = 0
 pTime = 0
 
-detector = htm.handDetector(detectionCon=0.3)  # 你也可以修改检测手的置信度
+detector = htm.handDetector()  # 你也可以修改检测手的置信度
 
 # 音量初始化
 devices = AudioUtilities.GetSpeakers()
@@ -40,21 +41,21 @@ maxVol = volumeRange[1]
 while True:
     success, img = cap.read()  # 读入一帧图像
 
-    img = detector.findHands(img)
+    img = detector.findHands(img, draw=True)
     lmList = detector.findPosition(img, draw=False)  # 获取当前id和坐标
     if len(lmList) != 0:  # 如果检测出点了
-        # print(lmList[4], lmList[8])  # 打印, 返回的是双列表, [[id,x,y], [id2,x,y], ...] # 打印21个点,
-        # 获取特定的id需要lmList[id]
-
-        # 如何检测你的大拇指和食指高亮呢
-        x1, y1 = lmList[4][1], lmList[4][2]  # 获取大拇指的x,y
+        # print(lmList[4], lmList[8d10, (122, 255, 0), cv2.FILLED)
+        x1, y1 = lmList[4][1], lmList[4][2]
         x2, y2 = lmList[8][1], lmList[8][2]
+        x3, y3 = lmList[20][1], lmList[20][2]
         cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
 
-        # 获取坐标, 然后高亮出来
         cv2.circle(img, (x1, y1), 10, (122, 255, 0), cv2.FILLED)
         cv2.circle(img, (x2, y2), 10, (122, 255, 0), cv2.FILLED)
         cv2.circle(img, (cx, cy), 10, (122, 255, 0), cv2.FILLED)
+
+        cv2.circle(img, (x3, y3), 10, (0, 255, 0), cv2.FILLED)
+        cv2.line(img, (x1,y1), (x3,y3),(0,255,255),2)
 
         # 然后我们来在我们想标记的中间画根线
         cv2.line(img, (x1, y1), (x2, y2), (255, 0, 255), 3)  # 参数分别是: 要显示到的图像, 坐标1, 坐标2, BGR, 厚度
@@ -74,7 +75,8 @@ while True:
         volume.SetMasterVolumeLevel(vol, None)  # 设置主音量
 
         # 我们最后一件事情能够做的就是显示音量:
-        cv2.putText(img,f"volume: {vol}",(50,30),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,255))
+        cv2.putText(img,f"volume: {vol}",(0,80),cv2.FONT_HERSHEY_COMPLEX,1,(0,255,255))
+
 
 
 
@@ -83,7 +85,12 @@ while True:
         # 根据你的检测精度和距离, 合适的设定你的阈值
         if length <= 25:  # 当长度<=25, 我认为食指和拇指一块了
             cv2.circle(img, (cx, cy),10, (0, 0, 200), cv2.FILLED)  # 当检测到合在一起了, 就改变颜色
+            pyautogui.hotkey('ctrl','alt','right')
+            time.sleep(1)
+        length2 = math.hypot(x3-x1,y3-y1)
 
+        if length2 <= 25:
+            cv2.waitKey(0)
 
 
 

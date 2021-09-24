@@ -15,6 +15,7 @@ class handDetector():
         self.mpHands = mp.solutions.hands
         self.hands = self.mpHands.Hands(self.mode, self.maxHands,
                                         self.detectionCon, self.trackCon)
+        # self.results = None
         self.mpDraw = mp.solutions.drawing_utils
 
     # findHands返回img,
@@ -36,7 +37,7 @@ class handDetector():
 
         lmList = []  # 保存,id,cx,cy
         if self.results.multi_hand_landmarks:
-            myHand = self.results.multi_hand_landmarks[handNo]  # 仅仅是找那个id
+            myHand = self.results.multi_hand_landmarks[handNo]
             for id, lm in enumerate(myHand.landmark):
                 # print(id, lm)
                 h, w, c = img.shape
