@@ -35,7 +35,7 @@ class handDetector():
 
         lmList = []  # 保存,id,cx,cy
         if self.results.multi_hand_landmarks:
-            myHand = self.results.multi_hand_landmarks[handNo]  # 仅仅是找那个id
+            myHand = self.results.multi_hand_landmarks[handNo]
             for id, lm in enumerate(myHand.landmark):
                 # print(id, lm)
                 h, w, c = img.shape
