@@ -92,4 +92,4 @@ if __name__ == '__main__':
             cv2.waitKey(1)
         else:
             print("打开摄像头失败")
-            isOpen, img = videoCap.read()
+            videoCap = cv2.VideoCapture(0)

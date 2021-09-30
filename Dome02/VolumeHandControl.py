@@ -108,4 +108,4 @@ while True:
     #########################################################
 
     cv2.imshow("VolumeControl", img)
-    cv2.waitKey(1)
+    cv2.waitKey(5)
