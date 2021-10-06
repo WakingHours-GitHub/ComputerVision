@@ -36,7 +36,7 @@ class HandTracking:
             for oneHand in self.results.multi_hand_landmarks:
                 if draw:
                     self.mpDraw.draw_landmarks(img, oneHand, self.mpHands.HAND_CONNECTIONS)
-        return img  # 返回图像
+        return img  # 返回加工好的图像
 
     def getLmList(self, img):
         lmList = []  # 保存所有的id, x, y
@@ -51,7 +51,7 @@ class HandTracking:
 
     def VolumeControl(self, img):
 
-        lmList = dete.getLmList(img)  # 返回各个列表
+        lmList = HandTracking.getLmList(self, img)  # 返回各个标号及其x，y坐标: [[],[], ...]
         if len(lmList) != 0:  # 检测到手
             # pass
             thumbx, thumby = lmList[4][1], lmList[4][2]  # 大拇指
@@ -59,7 +59,10 @@ class HandTracking:
 
             cv2.circle(img, (thumbx, thumby), 8, (122, 255, 0), cv2.FILLED)
             cv2.circle(img, (indexx, indexy), 8, (122, 255, 0), cv2.FILLED)
-            
+
+            # cv2.line(img, (thunm))
+
+
 
         else:
             print("检测不到手")
@@ -78,6 +81,7 @@ if __name__ == '__main__':
     while True:
         isOpen, img = videoCap.read()
         if isOpen:
+            # 检测手部
             img = dete.findHands(img)
             # lmList = dete.getLmList(img)
             # if len(lmList) != 0:  # 检测到手
@@ -85,8 +89,9 @@ if __name__ == '__main__':
             # else:
             #     print("没有检测到手")
 
-            dete.VolumeControl(img)
+            # dete.VolumeControl(img)
 
+            # 显示FPS
             dete.dispFPS(img)
 
             cv2.imshow("image", img)

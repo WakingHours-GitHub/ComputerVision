@@ -1,0 +1,5 @@
+mediapipe==0.8.7.3
+numpy==1.19.5
+opencv-python==4.5.3.56
+PyAutoGUI==0.9.52
+pycaw==20181226

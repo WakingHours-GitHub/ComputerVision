@@ -4,6 +4,7 @@ import math
 import numpy as np
 import pyautogui
 import HandTrackingModule as htm  # 导入一个HandTrack..的类
+
 # 导入音频相关的库: pip install pico
 from ctypes import cast, POINTER
 from comtypes import CLSCTX_ALL
