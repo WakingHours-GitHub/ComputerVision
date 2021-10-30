@@ -192,4 +192,5 @@ if __name__ == '__main__':
             cv2.waitKey(1)  # 等待读入
         else: # 如果打开失败， 则从新获取
             print("获取摄像头失败, 重新尝试获取")
+            videoCap = cv2.VideoCapture()
             isOpen, img = videoCap.read()
