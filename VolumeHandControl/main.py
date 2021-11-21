@@ -32,3 +32,4 @@ if __name__ == '__main__':
             isOpen, img = videoCapture.read()
 
         gc.collect()
+
