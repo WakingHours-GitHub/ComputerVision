@@ -33,6 +33,13 @@ detectionCon = 0.5
 trackCon = 0.5
 mpHands = mp.solutions.hands
 hands = mpHands.Hands(mode, maxHands, detectionCon, trackCon)
+"""
+  def __init__(self,
+               static_image_mode=False,
+               max_num_hands=2,
+               model_complexity=1,
+               min_detection_confidence=0.5,
+               min_tracking_confidence=0.5):"""
 mpDraw = mp.solutions.drawing_utils
 
 ################################
