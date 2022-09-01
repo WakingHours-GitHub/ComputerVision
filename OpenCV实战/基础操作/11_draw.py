@@ -87,9 +87,9 @@ cv.fillPoly(
 # 绘画字符串:
 cv.putText(
         img,
-        text="离谱",
+        text="LiPu",
         org=(300, 400), # 字符串左上角点的坐标
-        fontFace=cv.FONT_HERSHEY_SIMPLEX,
+        fontFace=cv.FONT_HERSHEY_COMPLEX,
         fontScale=2, # 字的规模, 字号
         color=(255, 255, 0),
         thickness=2,
