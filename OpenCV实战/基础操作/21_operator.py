@@ -1,6 +1,6 @@
 """
 本章节主要介绍一些常用的算子.
-
+Blue let me clame!
 
 
 """
@@ -69,11 +69,25 @@ def camera_test():
 
         if isopened:
             # deal img
+            dst = cv.Canny(
+                image=frame,
+                threshold1=100,
+                threshold2=150
+            )
+            result = np.zeros(shape=frame.shape)
+            result[:, :, 0] = dst
+            result[:, :, 1] = dst
+            result[:, :, 2] = dst
+
+            result = np.uint8(result)
 
 
-
-
-            cv.imshow("img", frame)
+            # cv.imshow("test", frame)
+            cv.imshow("img", np.hstack((frame, result)))
+            """
+            我们在使用imshow或者imwrite时，往往会错误的全白的纯色图像。
+            这是因为，imshow函数在处理时是分情况的，当Mat.type为浮点数时，默认区间为【0，1】,当浮点数大于1时就是白色；当Mat.type为整数时，默认区间为【0，255】。
+            """
         else:
             print('not opened')
 
