@@ -63,13 +63,17 @@ def scharr_operator():
     # cv.imshow("img", )
 
 def camera_test():
+    """
+    使用canny边缘检测算法对每帧图像进行操作。
+    :return:
+    """
     cap = cv.VideoCapture(0)
     while True:
         isopened, frame = cap.read()
 
         if isopened:
             # deal img
-            dst = cv.Canny(
+            dst = cv.Canny( # canny边缘检测算法。
                 image=frame,
                 threshold1=100,
                 threshold2=150

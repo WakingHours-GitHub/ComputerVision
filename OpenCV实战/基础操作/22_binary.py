@@ -20,10 +20,10 @@ def image_binary():
     # transition to gray image # 转换为灰色图像。
 
     # binary to image
-    res, dst = cv.threshold( # 返回两个值, 一个是状态, 一个是处理后的图像
+    res, dst = cv .threshold( # 返回两个值, 一个是状态, 一个是处理后的图像
         src=img_gray,  # source image
         thresh=50, # 阈值 -> thresh
-        maxval=255, # 如果超过阈值, 则替换的是数值
+        maxval=255, # 如 果超过阈值, 则替换的是数值
         type=cv.THRESH_BINARY, # 阈值类型.
     )
 
