@@ -86,6 +86,50 @@ def close_operation():
 
 
 
+def morphology_gradient():
+    """
+    形态学梯度: 原图 - 腐蚀过后的图片, 得到的就是形态学梯度,
+    也是一种求边缘的方法.
+    :return:
+    """
+    # read image
+    img_gray = cv.imread("i.png", cv.IMREAD_GRAYSCALE)
+
+    # image binary
+    ret, img_bin = cv.threshold(img_gray, 127, 255, cv.THRESH_BINARY)
+
+    # get kernel
+    kernel = cv.getStructuringElement(cv.MORPH_RECT, (5, 5))
+
+    # morphology gradient:
+    img_grad = cv.morphologyEx(img_bin, cv.MORPH_GRADIENT, kernel)
+
+    # show image
+    cv.imshow("img", np.hstack([img_bin, img_grad]))
+
+    cv.waitKey(0)
+
+    cv.destroyAllWindows()
+
+    # 使用越小的核, 腐蚀的就越小, 当原图-腐蚀图时, 得到的边缘也就越细
+
+
+
+def morphology_tophat():
+    """
+    顶帽运算: 原图 - 开运算.
+    开运算:
+    :return:
+    """
+
+    
+    
+    
+    
+    
+
+
+
 
 
 
@@ -96,4 +140,5 @@ def close_operation():
 
 if __name__ == '__main__':
     # open_operation()
-    close_operation()
+    # close_operation()
+    morphology_gradient()
