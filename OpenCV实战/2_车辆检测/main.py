@@ -2,13 +2,13 @@ import gc
 import cv2 as cv
 import numpy as np
 
-MIN_W = 90
-MIN_H = 90
+MIN_W = 50
+MIN_H = 50
 # 窗口shape: (360, 640, 3)
 START_POINT = 20
-LINE_HIGH = 290 # 检测线的高度, 从左上角开始.
+LINE_HIGH = 280 # 检测线的高度, 从左上角开始.
 LINE_WIDTH = 600
-LINE_RANGE = 2 # 线的范围, 只要在这个范围内. 就被判定为过线了.
+LINE_RANGE = 3 # 线的范围, 只要在这个范围内. 就被判定为过线了.
 
 # 存放有效车辆 容器
 cars: list[tuple] = list()
@@ -127,7 +127,7 @@ def main() -> None:
 
             # 显示信息
             cv.putText(frame, "Cars count: "+str(car_num), (10, 50), cv.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 1)
-            # cv.imshow("img", np.hstack([frame_close, frame_gray, mask]))
+            cv.imshow("img", np.hstack([frame_close, frame_gray, mask]))
             cv.imshow("frame", frame)
             # cv.imshow("img", frame_close)  # 展示.
 
