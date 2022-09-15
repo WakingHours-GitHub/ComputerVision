@@ -1,4 +1,6 @@
 import gc
+import time
+
 import cv2 as cv
 import numpy as np
 
@@ -134,8 +136,12 @@ def main() -> None:
             # 降噪
 
             # if cv.waitKey(25) & 0xFF == ord('q'):
-            if cv.waitKey(25) & 0xFF == 27:  # 27就是esc键
+            key = cv.waitKey(25)
+            if key & 0xFF == 27:  # 27就是esc键
                 break
+            elif key & 0xFF == ord('t'): # 按下‘t’就在暂停。 
+                time.sleep(0.5)
+
         else:
             print("frame not read in Python")
 
