@@ -45,16 +45,15 @@ print(contours)  #
 # 绘制轮廓
 cv.drawContours(
     image=img,  # 在那个图像上绘制图像, 这里使用原图, 在原图上绘制轮廓.
-    contours=contours, # 就是刚刚通过findContours查找到的轮廓点集.
-    contourIdx=-1, # 表示索引, 这个索引的顺序, 就是我们使用mode的方法查找的顺序. -1表示绘制所有轮廓.
-    color=(0, 0, 255), # 颜色
+    contours=contours,  # 就是刚刚通过findContours查找到的轮廓点集.
+    contourIdx=-1,  # 表示索引, 这个索引的顺序, 就是我们使用mode的方法查找的顺序. -1表示绘制所有轮廓.
+    color=(0, 0, 255),  # 颜色
     thickness=1
-) # 直接就在img中画图, 不返回任何值
+)  # 直接就在img中画图, 不返回任何值
 
 # show image
 cv.imshow("img", img)
 
-
-cv.waitKey(0)
+cv.waitKey(0)![](../3_图像拼接/img_stitch1.png)
 
 cv.destroyAllWindows()
