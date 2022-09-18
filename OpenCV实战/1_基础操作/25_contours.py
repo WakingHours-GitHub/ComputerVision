@@ -54,6 +54,6 @@ cv.drawContours(
 # show image
 cv.imshow("img", img)
 
-cv.waitKey(0)![](../3_图像拼接/img_stitch1.png)
+cv.waitKey(0)
 
 cv.destroyAllWindows()
