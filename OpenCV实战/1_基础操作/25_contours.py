@@ -43,7 +43,7 @@ print(contours)  #
 # 只是存储角点. 因此数据量就得到简化了.
 
 # 绘制轮廓
-cv.drawContours(
+cv.drawContours( # 绘制轮廓。
     image=img,  # 在那个图像上绘制图像, 这里使用原图, 在原图上绘制轮廓.
     contours=contours,  # 就是刚刚通过findContours查找到的轮廓点集.
     contourIdx=-1,  # 表示索引, 这个索引的顺序, 就是我们使用mode的方法查找的顺序. -1表示绘制所有轮廓.

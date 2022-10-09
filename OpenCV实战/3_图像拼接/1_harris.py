@@ -11,7 +11,27 @@ Harris角点.
 
 """
 
+import cv2 as cv
+import numpy as np
 
+
+img = cv.imread("./chess.png")
+img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+# 使用harris角点检测:
+img_harris = cv.cornerHarris(
+    src=img_gray,
+    blockSize=5,
+    ksize=5, # sobel的卷积核
+    k=0.04 # 权重系数
+)
+
+# show image
+cv.imshow("harris", img_harris)
+
+cv.waitKey(0)
+
+cv.destroyAllWindows()
 
 
 
