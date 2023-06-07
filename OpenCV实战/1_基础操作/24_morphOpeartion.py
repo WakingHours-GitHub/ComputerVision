@@ -163,7 +163,7 @@ def morphology_blackhat():
 
 if __name__ == '__main__':
     # open_operation()
-    # close_operation()
+    close_operation()
     # morphology_gradient()
     # morphology_tophat()
-    morphology_blackhat()
+    # morphology_blackhat()
